@@ -24,7 +24,10 @@ export class FindHowToHelp extends React.Component {
         const selectedAction = this.state.karmaAction;
         return (
             <div>
-                <KarmaOptions onChange = {this.handleActionChange} selection = {selectedAction}/>
+                <span>
+                    <label>How would you like to help: </label>
+                    <KarmaOptions onChange = {this.handleActionChange} selection = {selectedAction}/>
+                </span>
             </div>
         );
     }
