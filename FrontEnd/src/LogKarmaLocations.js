@@ -12,7 +12,7 @@ export class LogKarmaLocations extends React.Component {
     }
     render() {
         return (
-            <input type = "text" ref = {input => this.location = input}/>
+            <input type = "text" onChange = {this.props.onChange}/>
         );
     }
 }
