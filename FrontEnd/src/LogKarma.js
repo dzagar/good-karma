@@ -2,7 +2,7 @@
  * Created by danazagar on 2017-10-14.
  */
 import React from 'react';
-import { LogKarmaOptions } from './LogKarmaOptions';
+import { KarmaOptions } from './KarmaOptions';
 import { LogKarmaContainer } from './LogKarmaContainer';
 
 export class LogKarma extends React.Component {
@@ -36,7 +36,7 @@ export class LogKarma extends React.Component {
         const selectedAction = this.state.karmaAction;
         return (
             <div>
-                <LogKarmaOptions onChange = {this.handleActionChange} selection = {selectedAction}/>
+                <KarmaOptions onChange = {this.handleActionChange} selection = {selectedAction}/>
                 <LogKarmaContainer selection = {selectedAction} onLocationChange = {this.handleLocationChange} onDateChange = {this.handleDateChange}/>
             </div>
         );
