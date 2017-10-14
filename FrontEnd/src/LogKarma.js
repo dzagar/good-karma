@@ -2,7 +2,7 @@
  * Created by danazagar on 2017-10-14.
  */
 import React from 'react';
-import { LogKarmaOptions } from './LogKarmaOptions';
+import { KarmaOptions } from './KarmaOptions';
 import { LogKarmaContainer } from './LogKarmaContainer';
 
 export class LogKarma extends React.Component {
@@ -23,7 +23,7 @@ export class LogKarma extends React.Component {
         return (
             <div>
                 <p> What good deed have you completed?</p>
-                <LogKarmaOptions onChange = {this.handleActionChange} selection = {selectedAction}/>
+                <KarmaOptions onChange = {this.handleActionChange} selection = {selectedAction}/>
                 <LogKarmaContainer selection = {selectedAction}/>
             </div>
         );
