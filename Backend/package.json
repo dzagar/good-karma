@@ -1,0 +1,19 @@
+{
+  "name": "good-karma",
+  "version": "1.0.0",
+  "description": "Backend server for good-karma hackathon project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Nicholas Van Bommel",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.12.2"
+  }
+}
