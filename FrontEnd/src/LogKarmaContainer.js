@@ -7,6 +7,7 @@ import { LogKarmaDates } from './LogKarmaDates';
 import { LogKarmaDurations } from './LogKarmaDurations';
 import { LogKarmaAmounts } from './LogKarmaAmounts';
 import { postNewBloodDonation } from './helpersTemp/BloodDonationHelper';
+import { postNewDonation, postNewVolunteering } from './helpersTemp/NonProfitHelper';
 import moment from 'moment';
 
 export class LogKarmaContainer extends React.Component {
@@ -35,11 +36,11 @@ export class LogKarmaContainer extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         if (this.props.selection === "act1"){
-            postNewBloodDonation("2015-01-01", "london", "59e29494c2a8d12a8cfbe722");
+            postNewBloodDonation(this.state.date, this.state.location, "59e29494c2a8d12a8cfbe722");
         } else if (this.props.selection === "act2"){
-            alert('fake post');
+            postNewDonation(this.state.date, this.state.location, this.state.amount , "59e29494c2a8d12a8cfbe722");
         } else if (this.props.selection === "act3"){
-            alert('fake post 2');
+            postNewVolunteering(this.state.date, this.state.location, this.state.duration, "59e29494c2a8d12a8cfbe722");
         }
     }
     render() {

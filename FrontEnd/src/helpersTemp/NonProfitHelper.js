@@ -2571,6 +2571,43 @@ export function GetSubcategories(categoryLetter, callback, self){
     });
 }
 
+export function postNewVolunteering(date, location, hours, userID)
+{
+    $.ajax({
+        url : "http://localhost:3700/volunteering",
+        type: "POST",
+        data: JSON.stringify(
+            {
+                "bloodDonation" : {
+                    "date" : date,
+                    "location": location,
+                    "user": userID
+                }
+            }
+        ),
+        contentType: "application/json; charset=utf-8",
+        dataType   : "json"
+    });
+}
+
+export function postNewDonation(date, location, amount, userID)
+{
+    $.ajax({
+        url : "http://localhost:3700/cashDonations",
+        type: "POST",
+        data: JSON.stringify(
+            {
+                "bloodDonation" : {
+                    "date" : date,
+                    "location": location,
+                    "user": userID
+                }
+            }
+        ),
+        contentType: "application/json; charset=utf-8",
+        dataType   : "json"
+    });
+}
 export function GetNonProfitResults(city, state, group, subcategory){
 
 }
