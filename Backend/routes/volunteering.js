@@ -42,5 +42,16 @@ router.route('/')
             }
         });
     });
+    
+router.route('/:volunteering_id')
+    .get(parseUrlencoded, parseJSON, function (request, response) {
+        Volunteering.findById(request.params.volunteering_id, function(error, volunteering) {
+            if (error) {
+                response.send(error);
+            } else {
+                response.json({volunteering: volunteering});
+            }
+        });
+    })
 
 module.exports = router;

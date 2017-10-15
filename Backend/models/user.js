@@ -6,7 +6,7 @@ var userSchema = mongoose.Schema(
         email: String,
         bloodDonations: [{type: mongoose.Schema.ObjectId, ref: 'BloodDonations'}],
         cashDonations: [{type: mongoose.Schema.ObjectId, ref: 'CashDonations'}],
-        volunteering: [{type: mongoose.Schema.ObjectId, ref: 'Volunteering'}],
+        volunteerings: [{type: mongoose.Schema.ObjectId, ref: 'Volunteering'}],
     }
 );
 

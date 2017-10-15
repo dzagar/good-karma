@@ -42,5 +42,16 @@ router.route('/')
             }
         });
     });
+    
+router.route('/:cashDonation_id')
+    .get(parseUrlencoded, parseJSON, function (request, response) {
+        CashDonations.findById(request.params.cashDonation_id, function(error, cashDonation) {
+            if (error) {
+                response.send(error);
+            } else {
+                response.json({cashDonation: cashDonation});
+            }
+        });
+    })
 
 module.exports = router;

@@ -7,7 +7,7 @@ var parseJSON = bodyParser.json();
 
 router.route('/')
     .post(parseUrlencoded, parseJSON, function(request, response) {
-        var user = new Users.Model(request.body.user);
+        var user = new Users(request.body.user);
         user.save(function(error) {
             if (error) {
                 response.send({error: error});
@@ -19,7 +19,7 @@ router.route('/')
     })
 
     .get(parseUrlencoded, parseJSON, function (request, response) {
-        Users.Model.find(function(error, users) {
+        Users.find(function(error, users) {
             if (error) {
                 response.send(error);
             }
