@@ -107,13 +107,11 @@ export class PreviousContributions extends React.Component {
 
     getVolunteerings(data, self)
     {
-        console.log(data);
         var volunteeringsLength = data.length;
         var volunteering = [];
         var populated = false;
         data.forEach(function(obj){
             $.get( "http://localhost:3700/volunteering/" + obj, function( data2 ) {
-                console.log(data2);
                 volunteering.push(data2);
                 volunteeringsLength--;
                 if (volunteeringsLength == 0)
