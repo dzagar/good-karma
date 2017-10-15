@@ -4,7 +4,6 @@
 import React from 'react';
 import { Panel, PageHeader, Button } from 'react-bootstrap';
 import { GetNaturalDisasters } from "./helpersTemp/NewsFeedHelper";
-import { apiKey } from "./apiKey";
 
 export class NewsFeed extends React.Component {
     constructor(props){
@@ -20,7 +19,7 @@ export class NewsFeed extends React.Component {
                newsResults: data
             });
         }
-        GetNaturalDisasters(apiKey, newsResultsCB, this);
+        GetNaturalDisasters(newsResultsCB, this);
     }
 
     getArticle(obj){
