@@ -22,7 +22,7 @@ export class LogKarma extends React.Component {
         const selectedAction = this.state.karmaAction;
         return (
             <div>
-                <p> What good deed have you completed?</p>
+                <p> What good deed would you like to log?</p>
                 <KarmaOptions onChange = {this.handleActionChange} selection = {selectedAction}/>
                 <LogKarmaContainer selection = {selectedAction}/>
             </div>

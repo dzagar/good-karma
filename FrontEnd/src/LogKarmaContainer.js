@@ -47,9 +47,9 @@ export class LogKarmaContainer extends React.Component {
         const selectedKarma = this.props.selection;
         let extraParam;
         if (selectedKarma === "act2"){
-            extraParam = <label>Duration (hours)<LogKarmaDurations onChange = {this.handleDurationChange}/></label>
-        } else if (selectedKarma === "act3"){
             extraParam = <label>Amount donated<LogKarmaAmounts onChange = {this.handleAmountChange}/></label>
+        } else if (selectedKarma === "act3"){
+            extraParam = <label>Duration (hours)<LogKarmaDurations onChange = {this.handleDurationChange}/></label>
         }
 
         return (

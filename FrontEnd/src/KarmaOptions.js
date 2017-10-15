@@ -13,9 +13,9 @@ export class KarmaOptions extends React.Component {
         return (
             <div>
             <select name = "karmaAction" value = {this.props.selection} onChange = {this.props.onChange}>
-                <option value = "act1">Donated blood</option>
-                <option value = "act2">Donated money</option>
-                <option value = "act3">Volunteered</option>
+                <option value = "act1">Donate blood</option>
+                <option value = "act2">Donate money</option>
+                <option value = "act3">Volunteer</option>
             </select>
             </div>
         );

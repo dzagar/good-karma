@@ -2536,16 +2536,14 @@ export const states = [
     "WY",
 ]
 
-function GetRedCrossLocations(city, state) {
+export function GetRedCrossLocations(city, state, self, cb) {
     var cityString = encodeURIComponent(city).toString();
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            let x = getListOfLocations(this.responseText);
-            document.getElementById("demo").innerHTML = x;
         }
     };
-    xhttp.open("GET", "http://www.redcrossblood.org/give/drive/driveSearchList.jsp?city=" + city + "&state=" + state + "&sd=10/15/2017&ed=10/28/2017&dt=WB:DR:PL&&_requestid=271494#", true);
+    xhttp.open("GET", "http://www.redcrossblood.org/give/drive/driveSearchList.jsp?city=" + cityString + "&state=" + state + "&sd=10/15/2017&ed=10/28/2017&dt=WB:DR:PL&&_requestid=271494#", true);
     xhttp.send();
 }
 
@@ -2553,11 +2551,18 @@ function GetRedCrossLocations(city, state) {
 function getListOfLocations(rawResponse)
 {
     var driveList= JSON.parse(rawResponse.split('var driveData = ')[1].split(';')[0].replace(/\n/g, "").replace('},										 ]', '}]')).driveList;
-    var returnVal = "";
+    var returnVal = [];
 
     for(var currentVal in driveList)
     {
-        returnVal = returnVal + JSON.stringify(driveList[currentVal].driveName) + "<br/>";
+
+        if (driveList[currentVal].siteLine1)
+        {
+        }
+        
+        if (driveList[currentVal].siteLine2)
+        {
+        }
     }
 
     return returnVal;
