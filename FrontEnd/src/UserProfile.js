@@ -12,7 +12,7 @@ export class UserProfile extends React.Component {
             firstName: null,
             lastName: null,
             email: null,
-            karma: null,
+            karma: 0,
             bloodDonationTotal: null,
             cashDonationTotal: null,
             volunteeringTotal: null,
@@ -40,6 +40,7 @@ export class UserProfile extends React.Component {
 
                 if (data.user.cashDonations != null && data.user.cashDonations.length > 0)
                 {
+                    console.log(data.user.cashDonations);
                     self.getCashDonations(data.user.cashDonations, self);
                 }
 
@@ -67,9 +68,9 @@ export class UserProfile extends React.Component {
         var populated = false;
         data.forEach(function(obj){
             $.get( "http://localhost:3700/volunteering/" + obj, function( data2 ) {
-                if (!isNaN(data2.duration))
+;                if (!isNaN(data2.volunteering.duration))
                 {
-                    volunteeringDuration += parseInt(data2.duration);
+                    volunteeringDuration += parseInt(data2.volunteering.duration);
                 }
                 volunteeringsLength--;
                 if (volunteeringsLength == 0)
@@ -81,8 +82,8 @@ export class UserProfile extends React.Component {
                     }
 
                     self.setState({
-                        volunteeringTotal: volunteeringsLength,
-                        volunteeringPoints: volunteeringsLength * 5
+                        volunteeringTotal: volunteeringDuration,
+                        volunteeringPoints: volunteeringDuration * 5
                     });
                 }
             });
@@ -96,9 +97,9 @@ export class UserProfile extends React.Component {
         var populated = false;
         data.forEach(function(obj){
             $.get( "http://localhost:3700/cashDonations/" + obj, function( data2 ) {
-                if (!isNaN(data2.duration))
+                if (data2.cashDonation.amount != null && data2.cashDonation.amount != "" && !isNaN(data2.cashDonation.amount))
                 {
-                    donationsTotal += parseInt(data2.duration);
+                    donationsTotal += parseInt(data2.cashDonation.amount);
                 }
                 donationLength--;
                 if (donationLength == 0)
@@ -123,7 +124,7 @@ export class UserProfile extends React.Component {
             <div>
                 <label>First Name: {this.state.firstName}</label><br/>
                 <label>Last Name: {this.state.lastName}</label><br/>
-                <label>Email: this.state.email}</label><br/>
+                <label>Email: {this.state.email}</label><br/>
                 <label>Total Karma: {this.state.karma}</label><br/>
                 <Table striped bordered condensed hover>
                     <thead>
