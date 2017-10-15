@@ -2578,9 +2578,10 @@ export function postNewVolunteering(date, location, hours, userID)
         type: "POST",
         data: JSON.stringify(
             {
-                "bloodDonation" : {
+                "volunteering" : {
                     "date" : date,
                     "location": location,
+                    "duration": hours,
                     "user": userID
                 }
             }
@@ -2597,9 +2598,10 @@ export function postNewDonation(date, location, amount, userID)
         type: "POST",
         data: JSON.stringify(
             {
-                "bloodDonation" : {
+                "cashDonation" : {
                     "date" : date,
                     "location": location,
+                    "amount": amount,
                     "user": userID
                 }
             }

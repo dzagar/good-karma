@@ -29,6 +29,7 @@ export class LogKarmaContainer extends React.Component {
         });
     }
     handleDateChange(date) {
+        console.log(date);
         this.setState({
             date: date
         });
@@ -58,7 +59,7 @@ export class LogKarmaContainer extends React.Component {
                 <LogKarmaLocations onChange = {this.handleLocationChange}/>
                 </label>
                 <label>Date:
-                    <LogKarmaDates onChange = {this.handleDateChange}/>
+                    <LogKarmaDates selectedVal = {this.state.date} onChange = {this.handleDateChange}/>
                 </label>
                 {extraParam}
                 <input type = "submit" value = "Submit"/>

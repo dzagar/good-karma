@@ -10,12 +10,12 @@ export class LogKarmaDates extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: props.date
+            date: this.props.date
         };
     }
     render() {
         return (
-            <DatePicker selected = {this.state.date} onChange = {this.props.onChange}/>
+            <DatePicker selected = {this.selectedVal} onChange = {this.props.onChange}/>
         );
     }
 }
