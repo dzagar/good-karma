@@ -19,7 +19,7 @@ export class NavBar extends React.Component {
                     <NavItem onClick = {()=>{this.props.changeTab(3)}}>View Previous Contributions</NavItem>
                 </Nav>
                 <Nav pullRight>
-                    <NavItem>User Information</NavItem>
+                    <NavItem onClick = {()=>{this.props.changeTab(4)}}>User Information</NavItem>
                 </Nav>
             </Navbar>
         );
