@@ -2561,11 +2561,12 @@ export const nonProfitGroupTitles = [
 export function GetSubcategories(categoryLetter, callback, self){
     $.get("https://projects.propublica.org/nonprofits/api/v2/search.json?ntee%5Bid%5D=" + nonProfitGroupingNums[categoryLetter], function(data){
         var orgs = data.organizations;
-        orgs.forEach(function(obj, index){
-           if (obj.ntee_code[0] != categoryLetter){
-                orgs.splice(index,1);
+        var subset = [];
+        orgs.forEach(function(obj){
+           if (obj.ntee_code[0] === categoryLetter){
+                subset = nonProfitTypes[obj.ntee_code[0]];
            }
         });
-        callback(orgs, self);
+        callback(subset, self);
     });
 }

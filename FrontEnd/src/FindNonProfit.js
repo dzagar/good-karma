@@ -26,18 +26,7 @@ export class FindNonProfit extends React.Component {
     }
     categoryCallback(data, self){
         self.setState({
-            jsonCats: data
-        });
-        let catVals = [];
-        let cats = [];
-        self.state.jsonCats.forEach(function (obj) {
-            if (obj.ntee_code != null && !catVals.includes(obj.ntee_code[0])){
-                catVals.push(obj.ntee_code[0]);
-                cats = cats.concat(nonProfitTypes[obj.ntee_code[0]]);
-            }
-        });
-        self.setState({
-            categories: cats
+            categories: data
         });
     }
     componentWillMount(){
