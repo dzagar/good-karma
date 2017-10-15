@@ -2487,9 +2487,46 @@ export const nonProfitTypes =
             }
         ]
     }
-export const nonProfitGroupings = {
+export const nonProfitGroupingNums = {
     "A": 1,
-    "B": 
+    "B": 2,
+    "C": 3,
+    "D": 3,
+    "E": 4,
+    "F": 4,
+    "G": 4,
+    "H": 4,
+    "I": 5,
+    "J": 5,
+    "K": 5,
+    "L": 5,
+    "M": 5,
+    "N": 5,
+    "O": 5,
+    "P": 5,
+    "Q": 6,
+    "R": 7,
+    "S": 7,
+    "T": 7,
+    "U": 7,
+    "V": 7,
+    "W": 7,
+    "X": 8,
+    "Y": 9,
+    "Z": 10
+}
+
+export const nonProfitGroupTitles = {
+    1: "Arts, Culture, and Humanities",
+    2: "Education",
+    3: "Environment and Animals",
+    4: "Health",
+    5: "Human Services",
+    6: "International, Foreign Affairs",
+    7: "Public, Societal Benefit",
+    8: "Religion Related",
+    9: "Mutual/Membership Benefit",
+    10: "Unknown, Unclassified"
 }
 
 export function GetSubcategories(categoryInt, callback, self){
