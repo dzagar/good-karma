@@ -14,6 +14,7 @@ export class NavBar extends React.Component {
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>
+                    <NavItem onClick = {()=>{this.props.changeTab(0)}}>News Feed</NavItem>
                     <NavItem onClick = {()=>{this.props.changeTab(1)}}>How To Help</NavItem>
                     <NavItem onClick = {()=>{this.props.changeTab(2)}}>Log Your Karma!</NavItem>
                     <NavItem onClick = {()=>{this.props.changeTab(3)}}>View Previous Contributions</NavItem>
