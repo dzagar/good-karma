@@ -2610,6 +2610,24 @@ export function postNewDonation(date, location, amount, userID)
         dataType   : "json"
     });
 }
-export function GetNonProfitResults(city, state, group, subcategory){
+
+export function GetNonProfitResults(city, state, group, subcategory, self, locationCallback){
+    $.get("https://projects.propublica.org/nonprofits/api/v2/search.json?ntee%5Bid%5D=" + nonProfitGroupingNums[group], function(data){
+        var orgs = data.organizations;
+        var subset = [];
+        orgs.forEach(function(obj){
+            if (obj.ntee_code === subcategory || (obj.city.includes(city.toUpperCase()) && obj.state === state)){
+                subset = subset.concat(obj);
+            }
+        });
+        var empty = subset.filter(function(el) {
+                return !$.isEmptyObject(el);
+            }).length === 0;
+        if (empty || subset === undefined){
+            locationCallback(self, null);
+        } else {
+            locationCallback(self, subset);
+        }
+    });
 
 }

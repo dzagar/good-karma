@@ -2,24 +2,26 @@
  * Created by danazagar on 2017-10-14.
  */
 import React from 'react';
-import { GetSubcategories, nonProfitTypes, nonProfitGroupingNames } from './helpersTemp/NonProfitHelper';
+import { GetSubcategories, nonProfitTypes, nonProfitGroupingNames, GetNonProfitResults } from './helpersTemp/NonProfitHelper';
 import { states } from './helpersTemp/BloodDonationHelper';
+import { NonProfitResultsContainer } from './NonProfitResultsContainer'
 
 export class FindNonProfit extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            jsonCats: [],
             grouping: "A",
             categories: [],
             subcategory: "A01",
             city: "New York",
-            state: "NY"
-        };
+            state: "NY",
+            results: []}
+        ;
         this.handleGroupChange = this.handleGroupChange.bind(this);
         this.handleSubcategoryChange = this.handleSubcategoryChange.bind(this);
         this.handleCityChange = this.handleCityChange.bind(this);
         this.handleStateChange = this.handleStateChange.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
     }
     getNonProfitSub(obj){
         return (
@@ -64,9 +66,12 @@ export class FindNonProfit extends React.Component {
     }
     handleSearch(e) {
         e.preventDefault();
-        let location = function(self, ){
-
+        let locationCallback = function(self, results){
+            self.setState({
+                results: results
+            });
         };
+        GetNonProfitResults(this.state.city, this.state.state, this.state.grouping, this.state.subcategory, this, locationCallback);
     }
     render() {
         var categories = this.state.categories;
@@ -100,7 +105,7 @@ export class FindNonProfit extends React.Component {
                   </label>
                     <input type = "submit" value = "Submit"/>
                 </form>
-
+                <NonProfitResultsContainer results = {this.state.results}/>
             </div>
         );
     }
