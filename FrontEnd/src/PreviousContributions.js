@@ -48,7 +48,7 @@ export class PreviousContributions extends React.Component {
     getVolunteeringRow(obj){
         return (
             <tr key={obj.volunteering._id}>
-                <td>Monetary Donation ({obj.volunteering.duration}h)</td>
+                <td>Volunteering ({obj.volunteering.duration}h)</td>
                 <td>{obj.volunteering.location}</td>
                 <td>{obj.volunteering.date}</td>
                 <td>8</td>
