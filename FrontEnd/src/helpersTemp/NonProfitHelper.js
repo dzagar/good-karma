@@ -2516,22 +2516,56 @@ export const nonProfitGroupingNums = {
     "Z": 10
 }
 
-export const nonProfitGroupTitles = {
-    1: "Arts, Culture, and Humanities",
-    2: "Education",
-    3: "Environment and Animals",
-    4: "Health",
-    5: "Human Services",
-    6: "International, Foreign Affairs",
-    7: "Public, Societal Benefit",
-    8: "Religion Related",
-    9: "Mutual/Membership Benefit",
-    10: "Unknown, Unclassified"
+export const nonProfitGroupingNames = {
+    "A": "Arts, Culture and Humanities",
+    "B": "Educational Institutions and Related Activities",
+    "C": "Environmental Quality, Protection and Beautification",
+    "D": "Animal-Related",
+    "E": "Health – General and Rehabilitative",
+    "F": "Mental Health, Crisis Intervention",
+    "G": "Diseases, Disorders, Medical Disciplines",
+    "H": "Medical Research",
+    "I": "Crime, Legal-Related",
+    "J": "Employment, Job-Related",
+    "K": "Food, Agriculture and Nutrition",
+    "L": "Housing, Shelter",
+    "M": "Public Safety, Disaster Preparedness and Relief",
+    "N": "Recreation, Sports, Leisure, Athletics",
+    "O": "Youth Development",
+    "P": "Human Services – Multipurpose and Other",
+    "Q": "International, Foreign Affairs and National Security",
+    "R": "Civil Rights, Social Action, Advocacy",
+    "S": "Community Improvement, Capacity Building",
+    "T": "Philanthropy, Voluntarism and Grantmaking Foundations",
+    "U": "Science and Technology Research Institutes, Services",
+    "V": "Social Science Research Institutes, Services",
+    "W": "Public, Society Benefit – Multipurpose and Other",
+    "X": "Religion-Related, Spiritual Development",
+    "Y": "Mutual/Membership Benefit Organizations, Other",
+    "Z": "Unknown"
 }
 
-export function GetSubcategories(categoryInt, callback, self){
-    $.get("https://projects.propublica.org/nonprofits/api/v2/search.json?ntee%5Bid%5D=" + categoryInt, function(data){
+export const nonProfitGroupTitles = [
+    "Arts, Culture, and Humanities",
+    "Education",
+    "Environment and Animals",
+    "Health",
+    "Human Services",
+    "International, Foreign Affairs",
+    "Public, Societal Benefit",
+    "Religion Related",
+    "Mutual/Membership Benefit",
+    "Unknown, Unclassified"
+]
+
+export function GetSubcategories(categoryLetter, callback, self){
+    $.get("https://projects.propublica.org/nonprofits/api/v2/search.json?ntee%5Bid%5D=" + nonProfitGroupingNums[categoryLetter], function(data){
         var orgs = data.organizations;
+        orgs.forEach(function(obj, index){
+           if (obj.ntee_code[0] != categoryLetter){
+                orgs.splice(index,1);
+           }
+        });
         callback(orgs, self);
     });
 }

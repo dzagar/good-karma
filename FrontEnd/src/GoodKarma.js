@@ -13,7 +13,7 @@ export class GoodKarma extends React.Component {
         super(props);
         this.handleTabChange = this.handleTabChange.bind(this);
         this.state = {
-            tabIndex: 0,
+            tabIndex: 2,
         }
     }
 
