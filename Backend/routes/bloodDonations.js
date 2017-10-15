@@ -43,4 +43,14 @@ router.route('/')
         });
     });
 
+router.route('/:bloodDonation_id')
+    .get(parseUrlencoded, parseJSON, function (request, response) {
+        BloodDonations.findById(request.params.bloodDonation_id, function(error, bloodDonation) {
+            if (error) {
+                response.send(error);
+            } else {
+                response.json({bloodDonation: bloodDonation});
+            }
+        });
+    })
 module.exports = router;
