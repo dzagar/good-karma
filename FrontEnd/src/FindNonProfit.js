@@ -64,7 +64,9 @@ export class FindNonProfit extends React.Component {
     }
     handleSearch(e) {
         e.preventDefault();
+        let location = function(self, ){
 
+        };
     }
     render() {
         var categories = this.state.categories;
@@ -98,6 +100,7 @@ export class FindNonProfit extends React.Component {
                   </label>
                     <input type = "submit" value = "Submit"/>
                 </form>
+
             </div>
         );
     }

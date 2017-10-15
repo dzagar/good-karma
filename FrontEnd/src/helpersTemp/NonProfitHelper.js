@@ -2570,3 +2570,7 @@ export function GetSubcategories(categoryLetter, callback, self){
         callback(subset, self);
     });
 }
+
+export function GetNonProfitResults(city, state, group, subcategory){
+
+}
