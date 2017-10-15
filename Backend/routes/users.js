@@ -28,5 +28,16 @@ router.route('/')
             }
         });
     });
+
+router.route('/:user_id')
+    .get(parseUrlencoded, parseJSON, function (request, response) {
+        Users.Model.findById(request.params.user_id, function(error, user) {
+            if (error) {
+                response.send(error);
+            } else {
+                response.json({user: user});
+            }
+        });
+    })
     
 module.exports = router;

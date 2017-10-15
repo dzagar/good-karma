@@ -8,7 +8,7 @@ var parseJSON = bodyParser.json();
 
 router.route('/')
     .post(parseUrlencoded, parseJSON, function(request, response) {
-        var bloodDonation = new BloodDonations.Model(request.body.bloodDonation);
+        var bloodDonation = new BloodDonations(request.body.bloodDonation);
         Users.findById(bloodDonation.user, function(error, user){
             if (error){
                 response.send(error);
@@ -28,14 +28,6 @@ router.route('/')
                         });
                     }
                 });
-            }
-        })
-        bloodDonation.save(function(error) {
-            if (erro ) {
-                response.send({error: error});
-            }
-            else {
-                response.json({bloodDonation: bloodDonation});
             }
         });
     })

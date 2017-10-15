@@ -30,15 +30,25 @@ function getListOfLocations(rawResponse)
 export function postNewBloodDonation(date, location, userID)
 {
     alert('!!!!!!!!');
-    $.post("localhost:3700/bloodDonations",
-    {
-        "bloodDonation" : {
-            "date" : date,
-            "location": location,
-            "user": userID
-	    }
-    }, function(data, status) {
-            alert('callbackhell!!!!!!!!');
+
+    $.ajax({
+        url : "http://localhost:3700/bloodDonations",
+        type: "POST",
+        data: JSON.stringify(
+            {
+                "bloodDonation" : {
+                    "date" : date,
+                    "location": location,
+                    "user": userID
+                }
+            }
+        ),
+        contentType: "application/json; charset=utf-8",
+        dataType   : "json",
+        success    : function(){
+            var x = 9;
+            console.log("Pure jQuery Pure JS object");
+        }
     });
 }
 

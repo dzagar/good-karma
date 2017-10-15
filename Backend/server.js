@@ -9,7 +9,7 @@ var users = require('./routes/users');
 var bloodDonations = require('./routes/bloodDonations')
 
 app.use(function (request, response, next) {
-    response.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     response.header('Access-Control-Allow-Methods', 'POST, PATCH, GET, PUT, DELETE, OPTIONS');
     next();

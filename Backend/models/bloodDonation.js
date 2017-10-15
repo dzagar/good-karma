@@ -7,5 +7,4 @@ var bloodDonationSchema = mongoose.Schema(
     }
 );
 
-var BloodDonations = mongoose.model('bloodDonation', bloodDonationSchema);
-exports.Model = BloodDonations;
+module.exports = mongoose.model('bloodDonation', bloodDonationSchema);
