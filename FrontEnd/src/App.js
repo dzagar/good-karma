@@ -3,6 +3,7 @@ import './App.css';
 import { LogKarma } from "./LogKarma";
 import { FindHowToHelp } from "./FindHowToHelp";
 import { NavBar } from "./NavBar";
+import { FindNonProfit } from "./FindNonProfit";
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <NavBar />
       <LogKarma/>
       <FindHowToHelp/>
+      <FindNonProfit/>
       </div>
     );
   }
