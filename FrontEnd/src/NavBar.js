@@ -7,10 +7,10 @@ import { Nav, Navbar, NavItem } from 'react-bootstrap'
 export class NavBar extends React.Component {
     render() {
         return (
-            <Navbar>
+            <Navbar inverse>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a>Good Karma</a>
+                        <strong style = {{color: 'lightblue'}}>Good Karma</strong>
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>

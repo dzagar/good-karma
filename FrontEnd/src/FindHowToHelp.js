@@ -5,6 +5,7 @@ import React from 'react';
 import { KarmaOptions } from "./KarmaOptions";
 import { FindBloodDonation } from "./FindBloodDonation";
 import { FindNonProfit } from "./FindNonProfit";
+import { PageHeader, FormGroup, ControlLabel } from 'react-bootstrap';
 
 
 export class FindHowToHelp extends React.Component {
@@ -35,10 +36,11 @@ export class FindHowToHelp extends React.Component {
         }
         return (
             <div>
-                <span>
-                    <label>How would you like to help: </label>
+                <PageHeader>How would you like to help? </PageHeader>
+                <FormGroup style = {{width: '50%', margin: 'auto', align: 'center', padding: 10 }}>
+                    <ControlLabel>Good karma action:</ControlLabel>
                     <KarmaOptions onChange = {this.handleActionChange} selection = {selectedAction}/>
-                </span>
+                </FormGroup>
                 <span>
                     {findThing}
                 </span>

@@ -4,7 +4,7 @@
 import React from 'react';
 
 import { states, GetRedCrossLocations } from "./helpersTemp/BloodDonationHelper";
-import { Table } from 'react-bootstrap';
+import { Table, Button, ControlLabel, FormControl } from 'react-bootstrap';
 
 export class FindBloodDonation extends React.Component {
     constructor(props) {
@@ -20,12 +20,11 @@ export class FindBloodDonation extends React.Component {
     }
 
     getDataRow(obj){
-        console.log(obj);
         var siteLine = obj.siteLine1.split("<br>").join(" ");
         var city = obj.siteCity;
         var state = obj.siteState;
         var startTime = obj.startTime;
-        var endTime = obj.endTime
+        var endTime = obj.endTime;
         var driveDate = obj.driveDate;
         return (
             <tr>
@@ -67,22 +66,18 @@ export class FindBloodDonation extends React.Component {
         return (
             <div>
                 <form onSubmit = {this.handleSearch}>
-                <p>
-                    <label>State: </label>
-                    <select name = "donationState" value = {this.state.state} onChange = {this.handleStateChange}>
+                    <ControlLabel>State: </ControlLabel>
+                    <FormControl componentClass = "select" name = "donationState" value = {this.state.state} onChange = {this.handleStateChange} style = {{width: '50%', margin: 'auto'}}>
                         {states.map(function(name){
                             return <option key={name} value={ name }>{name}</option>;
                         })}
-                    </select>
-                </p>
-                <p>
-                    <label>City: </label>
-                    <input type="text" value = {this.state.city} onChange = {this.handleCityChange} />
-                </p>
-                <input type = "submit" value = "Submit"/>
+                    </FormControl>
+                    <ControlLabel>City: </ControlLabel>
+                    <FormControl type="text" placeholder = "Enter a city" value = {this.state.city} onChange = {this.handleCityChange} style = {{width: '50%', margin: 'auto'}}/>
+                    <Button bsStyle = "primary" bsSize = "large" type = "submit" value = "Submit" style = {{margin: 10}}>Submit</Button>
                 </form>
 
-                <Table striped bordered condensed hover>
+                <Table style = {{background: 'white'}} bordered condensed>
                     <thead>
                     <tr>
                         <th>Address</th>

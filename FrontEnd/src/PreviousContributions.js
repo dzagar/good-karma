@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import $ from 'jquery';
-import { Table } from 'react-bootstrap';
+import { Table, PageHeader } from 'react-bootstrap';
 
 export class PreviousContributions extends React.Component {
     constructor(props) {
@@ -168,7 +168,9 @@ export class PreviousContributions extends React.Component {
         var volunteerings = this.state.volunteerings;
         var volunteeringsItems = volunteerings.map((obj) => this.getVolunteeringRow(obj));
         return (
-            <Table striped bordered condensed hover>
+            <div>
+            <PageHeader>Previous contributions to your community.</PageHeader>
+            <Table bordered condensed hover style = {{background: 'white'}}>
                 <thead>
                 <tr>
                     <th>Type</th>
@@ -183,6 +185,7 @@ export class PreviousContributions extends React.Component {
                 {volunteeringsItems}
                 </tbody>
             </Table>
+            </div>
         );
     }
 }

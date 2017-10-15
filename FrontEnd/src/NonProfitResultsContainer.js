@@ -31,8 +31,13 @@ export class NonProfitResultsContainer extends React.Component {
 
     render() {
         var results = this.props.results;
+        if (results === null){
+            results = <tr><td colSpan = '5'>No data to display.</td></tr>;
+        } else {
+            results = results.map((obj) => this.getDataRow(obj))
+        }
         return (
-            <Table striped bordered condensed hover>
+            <Table bordered condensed hover style = {{background: 'white'}}>
                 <thead>
                 <tr>
                     <th>State</th>
@@ -43,7 +48,7 @@ export class NonProfitResultsContainer extends React.Component {
                 </tr>
                 </thead>
                 <tbody>
-                    {results.map((obj) => this.getDataRow(obj))}
+                    {results}
                 </tbody>
             </Table>
         );

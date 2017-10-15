@@ -2,7 +2,7 @@
  * Created by danazagar on 2017-10-15.
  */
 import React from 'react';
-import { Panel, Col } from 'react-bootstrap';
+import { Panel, PageHeader } from 'react-bootstrap';
 import { GetNaturalDisasters } from "./helpersTemp/NewsFeedHelper";
 import { apiKey } from "./apiKey";
 
@@ -39,7 +39,8 @@ export class NewsFeed extends React.Component {
     }
     render(){
         return (
-            <div>
+            <div style = {{width: '90%', margin:'auto'}}>
+                <PageHeader>Stay up-to-date on relief efforts from trusted news sources.</PageHeader>
                 {(this.state.newsResults).map((obj) => this.getArticle(obj))}
             </div>
         );

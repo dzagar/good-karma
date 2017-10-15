@@ -5,6 +5,7 @@ import React from 'react';
 import { GetSubcategories, nonProfitTypes, nonProfitGroupingNames, GetNonProfitResults } from './helpersTemp/NonProfitHelper';
 import { states } from './helpersTemp/BloodDonationHelper';
 import { NonProfitResultsContainer } from './NonProfitResultsContainer'
+import { ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 export class FindNonProfit extends React.Component {
     constructor(props) {
@@ -13,8 +14,8 @@ export class FindNonProfit extends React.Component {
             grouping: "A",
             categories: [],
             subcategory: "A01",
-            city: "New York",
-            state: "NY",
+            city: "",
+            state: "",
             results: []}
         ;
         this.handleGroupChange = this.handleGroupChange.bind(this);
@@ -83,27 +84,23 @@ export class FindNonProfit extends React.Component {
         return (
             <div>
                 <form onSubmit = {this.handleSearch}>
-                  <label>City:
-                  <input type="text" value = {this.state.city} onChange = {this.handleCityChange} />
-                  </label>
-                  <label>State:
-                  <select name = "state" value = {this.state.state} onChange = {this.handleStateChange}>
+                  <ControlLabel>City:</ControlLabel>
+                  <FormControl type="text" value = {this.state.city} onChange = {this.handleCityChange} style = {{width: '50%', margin: 'auto'}}/>
+                  <ControlLabel>State:</ControlLabel>
+                  <FormControl componentClass = "select" name = "state" value = {this.state.state} onChange = {this.handleStateChange} style = {{width: '50%', margin: 'auto'}}>
                       {states.map(function(name){
                           return <option key={name} value={ name }>{name}</option>;
                       })}
-                  </select>
-                  </label>
-                  <label>Group:
-                  <select onChange = {this.handleGroupChange}>
+                  </FormControl>
+                  <ControlLabel>Group:</ControlLabel>
+                  <FormControl componentClass = "select" onChange = {this.handleGroupChange} style = {{width: '50%', margin: 'auto'}}>
                       {groups}
-                  </select>
-                  </label>
-                  <label>Subcategory:
-                  <select onChange = {this.handleSubcategoryChange}>
+                  </FormControl>
+                  <ControlLabel>Subcategory:</ControlLabel>
+                  <FormControl componentClass = "select" onChange = {this.handleSubcategoryChange} style = {{width: '50%', margin: 'auto'}}>
                       {subItems}
-                  </select>
-                  </label>
-                    <input type = "submit" value = "Submit"/>
+                  </FormControl>
+                    <Button bsStyle = "primary" bsSize = "large" type = "submit" value = "Submit" style = {{margin: 10}}>Submit</Button>
                 </form>
                 <NonProfitResultsContainer results = {this.state.results}/>
             </div>
