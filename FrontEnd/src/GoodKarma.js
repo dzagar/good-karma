@@ -7,6 +7,7 @@ import { FindHowToHelp } from "./FindHowToHelp";
 import { NavBar } from "./NavBar";
 import { PreviousContributions } from "./PreviousContributions";
 import { NewsFeed } from "./NewsFeed";
+import { UserProfile } from "./UserProfile";
 
 
 export class GoodKarma extends React.Component {
@@ -39,6 +40,9 @@ export class GoodKarma extends React.Component {
         }
         else if (this.state.tabIndex === 3) {
             displayTab = <PreviousContributions/>
+        }
+        else if (this.state.tabIndex === 4) {
+            displayTab = <UserProfile/>
         }
         return (
             <div>
