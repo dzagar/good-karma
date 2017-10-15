@@ -4,6 +4,7 @@
 import React from 'react';
 
 import { states, GetRedCrossLocations } from "./helpersTemp/BloodDonationHelper";
+import { Table } from 'react-bootstrap';
 
 export class FindBloodDonation extends React.Component {
     constructor(props) {
@@ -18,12 +19,34 @@ export class FindBloodDonation extends React.Component {
         }
     }
 
+    getDataRow(obj){
+        console.log(obj);
+        var siteLine = obj.siteLine1.split("<br>").join(" ");
+        var city = obj.siteCity;
+        var state = obj.siteState;
+        var startTime = obj.startTime;
+        var endTime = obj.endTime
+        var driveDate = obj.driveDate;
+        return (
+            <tr>
+                <td>{siteLine}</td>
+                <td>{city}</td>
+                <td>{state}</td>
+                <td>{driveDate}</td>
+                <td>{startTime}</td>
+                <td>{endTime}</td>
+            </tr>
+        );
+    }
+
     handleSearch(e) {
         e.preventDefault();
         let setLocationCB = function(self, redCrossLocations){
             self.setState({
                 locations: redCrossLocations
             });
+
+            console.log(redCrossLocations);
         };
         GetRedCrossLocations(this.state.city, this.state.state, this, setLocationCB);
     }
@@ -58,14 +81,22 @@ export class FindBloodDonation extends React.Component {
                 </p>
                 <input type = "submit" value = "Submit"/>
                 </form>
-                {this.state.locations.map(function(location, index){
-                    return (
-                        <div>
-                            <label key={index}>{ location }</label>
-                            <br />
-                        </div>
-                    )
-                })}
+
+                <Table striped bordered condensed hover>
+                    <thead>
+                    <tr>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Date</th>
+                        <th>Open Time</th>
+                        <th>Close Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {this.state.locations.map((obj) => this.getDataRow(obj))}
+                    </tbody>
+                </Table>
             </div>
         );
     }
