@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { GetSubcategories, nonProfitTypes, nonProfitGroupingNames } from './helpersTemp/NonProfitHelper';
+import { states } from './helpersTemp/BloodDonationHelper';
 
 export class FindNonProfit extends React.Component {
     constructor(props) {
@@ -10,9 +11,15 @@ export class FindNonProfit extends React.Component {
         this.state = {
             jsonCats: [],
             grouping: "A",
-            categories: []
+            categories: [],
+            subcategory: "A01",
+            city: "New York",
+            state: "NY"
         };
         this.handleGroupChange = this.handleGroupChange.bind(this);
+        this.handleSubcategoryChange = this.handleSubcategoryChange.bind(this);
+        this.handleCityChange = this.handleCityChange.bind(this);
+        this.handleStateChange = this.handleStateChange.bind(this);
     }
     getNonProfitSub(obj){
         return (
@@ -35,8 +42,29 @@ export class FindNonProfit extends React.Component {
     handleGroupChange(e) {
         GetSubcategories(e.target.value, this.categoryCallback, this);
         this.setState({
-            grouping: e.target.value
+            grouping: e.target.value,
+            subcategory: nonProfitTypes[e.target.value][0].code
         });
+    }
+    handleSubcategoryChange(e) {
+        this.setState({
+            subcategory: e.target.value
+        });
+    }
+    handleStateChange(e) {
+        this.setState({
+            state: e.target.value
+        });
+    }
+
+    handleCityChange(e) {
+        this.setState({
+            city: e.target.value
+        });
+    }
+    handleSearch(e) {
+        e.preventDefault();
+
     }
     render() {
         var categories = this.state.categories;
@@ -47,12 +75,29 @@ export class FindNonProfit extends React.Component {
         }
         return (
             <div>
-              <select onChange = {this.handleGroupChange}>
-                  {groups}
-              </select>
-              <select>
-                  {subItems}
-              </select>
+                <form onSubmit = {this.handleSearch}>
+                  <label>City:
+                  <input type="text" value = {this.state.city} onChange = {this.handleCityChange} />
+                  </label>
+                  <label>State:
+                  <select name = "state" value = {this.state.state} onChange = {this.handleStateChange}>
+                      {states.map(function(name){
+                          return <option key={name} value={ name }>{name}</option>;
+                      })}
+                  </select>
+                  </label>
+                  <label>Group:
+                  <select onChange = {this.handleGroupChange}>
+                      {groups}
+                  </select>
+                  </label>
+                  <label>Subcategory:
+                  <select onChange = {this.handleSubcategoryChange}>
+                      {subItems}
+                  </select>
+                  </label>
+                    <input type = "submit" value = "Submit"/>
+                </form>
             </div>
         );
     }
