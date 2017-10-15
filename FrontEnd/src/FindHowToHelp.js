@@ -24,6 +24,15 @@ export class FindHowToHelp extends React.Component {
 
     render() {
         const selectedAction = this.state.karmaAction;
+        let findThing;
+        if (selectedAction == "act1")
+        {
+            findThing = <FindBloodDonation />;
+        }
+        else if (selectedAction == "act2" || selectedAction == "act3")
+        {
+            findThing = <FindNonProfit />
+        }
         return (
             <div>
                 <span>
@@ -31,8 +40,7 @@ export class FindHowToHelp extends React.Component {
                     <KarmaOptions onChange = {this.handleActionChange} selection = {selectedAction}/>
                 </span>
                 <span>
-                    <FindBloodDonation />
-                    <FindNonProfit />
+                    {findThing}
                 </span>
             </div>
         );
