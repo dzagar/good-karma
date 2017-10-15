@@ -8,13 +8,10 @@ export class NavBar extends React.Component {
         super(props);
 
     }
-    generateItem(item) {
-        return <div>{item}</div>;
-    }
     render() {
-        var items = ['Log Karma', 'Find Good Karma Opportunities', 'View My Karma'].map(this.generateItem);
+
         return (
-            <nav>{items}</nav>
+            <p>boo</p>
         );
     }
 }

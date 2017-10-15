@@ -29,8 +29,6 @@ function getListOfLocations(rawResponse)
 
 export function postNewBloodDonation(date, location, userID)
 {
-    alert('!!!!!!!!');
-
     $.ajax({
         url : "http://localhost:3700/bloodDonations",
         type: "POST",
@@ -51,20 +49,3 @@ export function postNewBloodDonation(date, location, userID)
         }
     });
 }
-
-// function postNewBloodDonation2()
-// {
-//     fetch('localhost:3700/bloodDonations', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body:{
-//             "bloodDonation" : {
-//                 "date" : date,
-//                 "location": location,
-//                 "user": userID
-//             }
-//         }
-//     });
-// }
