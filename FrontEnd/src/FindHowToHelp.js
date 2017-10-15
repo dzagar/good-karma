@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { KarmaOptions } from "./KarmaOptions";
+import { FindBloodDonation } from "./FindBloodDonation"
 
 
 export class FindHowToHelp extends React.Component {
@@ -27,6 +28,9 @@ export class FindHowToHelp extends React.Component {
                 <span>
                     <label>How would you like to help: </label>
                     <KarmaOptions onChange = {this.handleActionChange} selection = {selectedAction}/>
+                </span>
+                <span>
+                    <FindBloodDonation />
                 </span>
             </div>
         );

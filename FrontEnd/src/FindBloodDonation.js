@@ -3,26 +3,36 @@
  */
 import React from 'react';
 
+import { states } from "./helpersTemp/BloodDonationHelper";
+
 export class FindBloodDonation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             city: '',
-            state: 'CA'
+            state: 'NY'
         }
     }
 
     render() {
         return (
             <div>
-                <span>
+
+                <form onSubmit = {this.handleSubmit}>
+                <p>
                     <label>State: </label>
-                    <input type="select"></input>
-                </span>
-                <span>
+                    <select name = "karmaAction" value = {this.props.selection} onChange = {this.props.onChange}>
+                        {states.map(function(name){
+                            return <option value={ name }>{name}</option>;
+                        })}
+                    </select>
+                </p>
+                <p>
                     <label>City: </label>
                     <input type="text"></input>
-                </span>
+                </p>
+                <input type = "submit" value = "Submit"/>
+                </form>
             </div>
         );
     }
