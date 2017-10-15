@@ -3,7 +3,8 @@
  */
 import React from 'react';
 import { KarmaOptions } from "./KarmaOptions";
-import { FindBloodDonation } from "./FindBloodDonation"
+import { FindBloodDonation } from "./FindBloodDonation";
+import { FindNonProfit } from "./FindNonProfit";
 
 
 export class FindHowToHelp extends React.Component {
@@ -31,6 +32,7 @@ export class FindHowToHelp extends React.Component {
                 </span>
                 <span>
                     <FindBloodDonation />
+                    <FindNonProfit />
                 </span>
             </div>
         );

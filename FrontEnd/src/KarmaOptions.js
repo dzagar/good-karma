@@ -2,13 +2,8 @@
  * Created by danazagar on 2017-10-14.
  */
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 export class KarmaOptions extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>
@@ -21,4 +16,3 @@ export class KarmaOptions extends React.Component {
         );
     }
 }
-//ReactDOM.render(<LogKarmaOptions/>, document.getElementById('app'));

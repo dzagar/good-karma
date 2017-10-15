@@ -5,7 +5,7 @@ import React from 'react';
 import { LogKarma } from "./LogKarma";
 import { FindHowToHelp } from "./FindHowToHelp";
 import { NavBar } from "./NavBar";
-import { FindNonProfit } from "./FindNonProfit";
+import { PreviousContributions } from "./PreviousContributions";
 
 
 export class GoodKarma extends React.Component {
@@ -17,27 +17,29 @@ export class GoodKarma extends React.Component {
         }
     }
 
-    handleTabChange(e) {
+    handleTabChange(val) {
+        console.log(val);
         this.setState({
-            tabIndex: e.target.value
+            tabIndex: val
         });
     }
 
     render() {
-
+        const selectedTabIndex = this.state.tabIndex;
         let displayTab;
-        if (this.state.tabIndex == 0) {
-            displayTab = <LogKarma />
-        }
-        else if (this.state.tabIndex == 1) {
+
+        if (this.state.tabIndex === 1) {
             displayTab = <FindHowToHelp/>
         }
-        else if (this.state.tabIndex == 2) {
-            displayTab = <FindNonProfit/>
+        else if (this.state.tabIndex === 2) {
+            displayTab = <LogKarma />
+        }
+        else if (this.state.tabIndex === 3) {
+            displayTab = <PreviousContributions/>
         }
         return (
             <div>
-                <NavBar />
+                <NavBar changeTab = {this.handleTabChange} selectedVal = {selectedTabIndex} />
                 {displayTab}
             </div>
         );

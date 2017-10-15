@@ -2489,7 +2489,7 @@ export const nonProfitTypes =
     }
 export const nonProfitGroupings = {
     "A": 1,
-    "B": 
+    "B": 2
 }
 
 export function GetSubcategories(categoryInt, callback, self){

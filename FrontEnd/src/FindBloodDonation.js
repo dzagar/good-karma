@@ -48,7 +48,7 @@ export class FindBloodDonation extends React.Component {
                     <label>State: </label>
                     <select name = "donationState" value = {this.state.state} onChange = {this.handleStateChange}>
                         {states.map(function(name){
-                            return <option value={ name }>{name}</option>;
+                            return <option key={name} value={ name }>{name}</option>;
                         })}
                     </select>
                 </p>
@@ -58,10 +58,10 @@ export class FindBloodDonation extends React.Component {
                 </p>
                 <input type = "submit" value = "Submit"/>
                 </form>
-                {this.state.locations.map(function(location){
+                {this.state.locations.map(function(location, index){
                     return (
                         <div>
-                            <label>{ location }</label>
+                            <label key={index}>{ location }</label>
                             <br />
                         </div>
                     )

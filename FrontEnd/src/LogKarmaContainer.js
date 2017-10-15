@@ -2,7 +2,6 @@
  * Created by danazagar on 2017-10-14.
  */
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { LogKarmaLocations } from './LogKarmaLocations';
 import { LogKarmaDates } from './LogKarmaDates';
 import { LogKarmaDurations } from './LogKarmaDurations';

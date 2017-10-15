@@ -2540,7 +2540,7 @@ export function GetRedCrossLocations(city, state, self, cb) {
     var cityString = encodeURIComponent(city).toString();
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState === 4 && this.status === 200) {
             cb(self, getListOfLocations(this.responseText));
         }
     };
@@ -2587,10 +2587,6 @@ export function postNewBloodDonation(date, location, userID)
             }
         ),
         contentType: "application/json; charset=utf-8",
-        dataType   : "json",
-        success    : function(){
-            var x = 9;
-            console.log("Pure jQuery Pure JS object");
-        }
+        dataType   : "json"
     });
 }
