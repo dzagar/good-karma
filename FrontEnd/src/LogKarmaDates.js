@@ -2,6 +2,9 @@
  * Created by danazagar on 2017-10-14.
  */
 import React from 'react';
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 export class LogKarmaDates extends React.Component {
     constructor(props) {
@@ -12,7 +15,7 @@ export class LogKarmaDates extends React.Component {
     }
     render() {
         return (
-            <input type = "text" onChange = {this.props.onChange}/>
+            <DatePicker selected = {this.state.date} onChange = {this.props.onChange}/>
         );
     }
 }

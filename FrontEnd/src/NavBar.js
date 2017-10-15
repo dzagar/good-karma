@@ -8,15 +8,13 @@ export class NavBar extends React.Component {
         super(props);
 
     }
+    generateItem(item) {
+        return <div>{item}</div>;
+    }
     render() {
-        const pages = ['home', 'blog', 'pics', 'bio', 'art', 'shop', 'about', 'contact'];
-        const navLinks = pages.map(page => {
-            return (
-                <a href={'/' + page}>
-                    {page}
-                </a>
-            )
-        });
-        return <nav>{navLinks}</nav>;
+        var items = ['Log Karma', 'Find Good Karma Opportunities', 'View My Karma'].map(this.generateItem);
+        return (
+            <nav>{items}</nav>
+        );
     }
 }

@@ -8,6 +8,7 @@ import { LogKarmaDates } from './LogKarmaDates';
 import { LogKarmaDurations } from './LogKarmaDurations';
 import { LogKarmaAmounts } from './LogKarmaAmounts';
 import { postNewBloodDonation } from './helpersTemp/BloodDonationHelper';
+import moment from 'moment';
 
 export class LogKarmaContainer extends React.Component {
     constructor(props) {
@@ -16,9 +17,8 @@ export class LogKarmaContainer extends React.Component {
         this.handleDateChange = this.handleDateChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
-            karmaAction: props.selection,
             location: '',
-            date: '',
+            date: moment(),
             duration: '',
             amount: ''
         }
@@ -28,31 +28,38 @@ export class LogKarmaContainer extends React.Component {
             location: e.target.value
         });
     }
-    handleDateChange(e) {
+    handleDateChange(date) {
         this.setState({
-            date: e.target.value
+            date: date
         });
     }
     handleSubmit(e) {
         e.preventDefault();
-        if (this.state.karmaAction === "act1"){
-            alert('HOLYFUUUCCCKKKKKK');
+        if (this.props.selection === "act1"){
             postNewBloodDonation("2015-01-01", "london", "59e29494c2a8d12a8cfbe722");
+        } else if (this.props.selection === "act2"){
+            alert('fake post');
+        } else if (this.props.selection === "act3"){
+            alert('fake post 2');
         }
     }
     render() {
         const selectedKarma = this.props.selection;
         let extraParam;
         if (selectedKarma === "act2"){
-            extraParam = <LogKarmaDurations onChange = {this.handleDurationChange}/>
+            extraParam = <label>Duration (hours)<LogKarmaDurations onChange = {this.handleDurationChange}/></label>
         } else if (selectedKarma === "act3"){
-            extraParam = <LogKarmaAmounts onChange = {this.handleAmountChange}/>
+            extraParam = <label>Amount donated<LogKarmaAmounts onChange = {this.handleAmountChange}/></label>
         }
 
         return (
             <form onSubmit = {this.handleSubmit}>
+                <label>Location:
                 <LogKarmaLocations onChange = {this.handleLocationChange}/>
-                <LogKarmaDates onChange = {this.handleDateChange}/>
+                </label>
+                <label>Date:
+                    <LogKarmaDates onChange = {this.handleDateChange}/>
+                </label>
                 {extraParam}
                 <input type = "submit" value = "Submit"/>
             </form>
