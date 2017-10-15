@@ -9,7 +9,7 @@ import { LogKarmaAmounts } from './LogKarmaAmounts';
 import { postNewBloodDonation } from './helpersTemp/BloodDonationHelper';
 import { postNewDonation, postNewVolunteering } from './helpersTemp/NonProfitHelper';
 import moment from 'moment';
-import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { FormGroup, Jumbotron, ControlLabel, Button } from 'react-bootstrap';
 
 export class LogKarmaContainer extends React.Component {
     constructor(props) {
@@ -23,7 +23,8 @@ export class LogKarmaContainer extends React.Component {
             location: '',
             date: moment(),
             duration: '',
-            amount: ''
+            amount: '',
+            enableJumbo: false
         }
     }
     handleLocationChange(e) {
@@ -58,6 +59,9 @@ export class LogKarmaContainer extends React.Component {
         } else if (this.props.selection === "act3"){
             postNewVolunteering(this.state.date, this.state.location, this.state.duration, "59e29494c2a8d12a8cfbe722");
         }
+        this.setState({
+            enableJumbo: true
+        });
     }
     render() {
         const selectedKarma = this.props.selection;
@@ -69,6 +73,7 @@ export class LogKarmaContainer extends React.Component {
         }
 
         return (
+            <div>
             <form onSubmit = {this.handleSubmit}>
                 <FormGroup>
                     <ControlLabel>Location:</ControlLabel>
@@ -79,6 +84,12 @@ export class LogKarmaContainer extends React.Component {
                 </FormGroup>
                 <Button bsStyle = "primary" bsSize = "large" type = "submit" value = "Submit">Submit</Button>
             </form>
+                <div style = {{padding: 20}}></div>
+            <Jumbotron style = {this.state.enableJumbo ? {background: 'rgba(40, 228, 247, 0.8)'} : {display: 'none'}}>
+                <h1>YOU ARE AWESOME!!!</h1>
+                <p>Sleep deprived, but still awesome.</p>
+            </Jumbotron>
+            </div>
         )
     }
 }

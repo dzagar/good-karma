@@ -2,7 +2,7 @@
  * Created by danazagar on 2017-10-15.
  */
 import React from 'react';
-import { Panel, PageHeader } from 'react-bootstrap';
+import { Panel, PageHeader, Button } from 'react-bootstrap';
 import { GetNaturalDisasters } from "./helpersTemp/NewsFeedHelper";
 import { apiKey } from "./apiKey";
 
@@ -27,9 +27,11 @@ export class NewsFeed extends React.Component {
         var trimmedDate = obj.date.toString().split('T',1)[0];
         return (
             <div>
-                <Panel header = {obj.headline} href = {obj.url}>
+                <Panel header = {obj.headline} >
                     {obj.snip}
                     <br/>
+                    <br/>
+                    <Button bsStyle = 'primary' bsSize = 'medium' href = {obj.url} target = "_blank">Read more</Button>
                     <br/>
                     <i style={{float: 'left'}}>Source: {obj.source}</i>
                     <i style={{float: 'right'}}>{trimmedDate}</i>
