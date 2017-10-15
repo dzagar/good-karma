@@ -126,7 +126,7 @@ export class UserProfile extends React.Component {
                 <label>Last Name: {this.state.lastName}</label><br/>
                 <label>Email: {this.state.email}</label><br/>
                 <label>Total Karma: {this.state.karma}</label><br/>
-                <Table bordered condensed hover>
+                <Table bordered condensed style = {{background: 'white'}}>
                     <thead>
                     <tr>
                         <th>Type</th>
