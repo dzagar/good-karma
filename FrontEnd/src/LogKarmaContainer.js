@@ -9,6 +9,7 @@ import { LogKarmaAmounts } from './LogKarmaAmounts';
 import { postNewBloodDonation } from './helpersTemp/BloodDonationHelper';
 import { postNewDonation, postNewVolunteering } from './helpersTemp/NonProfitHelper';
 import moment from 'moment';
+import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
 export class LogKarmaContainer extends React.Component {
     constructor(props) {
@@ -62,21 +63,21 @@ export class LogKarmaContainer extends React.Component {
         const selectedKarma = this.props.selection;
         let extraParam;
         if (selectedKarma === "act2"){
-            extraParam = <label>Amount donated<LogKarmaAmounts onChange = {this.handleAmountChange}/></label>
+            extraParam = <FormGroup><ControlLabel>Amount donated:</ControlLabel><LogKarmaAmounts onChange = {this.handleAmountChange}/></FormGroup>
         } else if (selectedKarma === "act3"){
-            extraParam = <label>Duration (hours)<LogKarmaDurations onChange = {this.handleDurationChange}/></label>
+            extraParam = <FormGroup><ControlLabel>Duration (hours):</ControlLabel><LogKarmaDurations onChange = {this.handleDurationChange}/></FormGroup>
         }
 
         return (
             <form onSubmit = {this.handleSubmit}>
-                <label>Location:
-                <LogKarmaLocations onChange = {this.handleLocationChange}/>
-                </label>
-                <label>Date:
-                    <LogKarmaDates date = {this.state.date} onChange = {this.handleDateChange}/>
-                </label>
-                {extraParam}
-                <input type = "submit" value = "Submit"/>
+                <FormGroup>
+                    <ControlLabel>Location:</ControlLabel>
+                        <LogKarmaLocations onChange = {this.handleLocationChange}/>
+                    <ControlLabel>Date:</ControlLabel>
+                        <LogKarmaDates date = {this.state.date} onChange = {this.handleDateChange}/>
+                    {extraParam}
+                </FormGroup>
+                <Button bsStyle = "primary" bsSize = "large" type = "submit" value = "Submit">Submit</Button>
             </form>
         )
     }

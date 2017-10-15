@@ -6,6 +6,7 @@ import { LogKarma } from "./LogKarma";
 import { FindHowToHelp } from "./FindHowToHelp";
 import { NavBar } from "./NavBar";
 import { PreviousContributions } from "./PreviousContributions";
+import { NewsFeed } from "./NewsFeed";
 
 
 export class GoodKarma extends React.Component {
@@ -27,7 +28,9 @@ export class GoodKarma extends React.Component {
     render() {
         const selectedTabIndex = this.state.tabIndex;
         let displayTab;
-
+        if (this.state.tabIndex === 0) {
+            displayTab = <NewsFeed/>
+        }
         if (this.state.tabIndex === 1) {
             displayTab = <FindHowToHelp/>
         }

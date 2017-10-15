@@ -2612,11 +2612,11 @@ export function postNewDonation(date, location, amount, userID)
 }
 
 export function GetNonProfitResults(city, state, group, subcategory, self, locationCallback){
-    $.get("https://projects.propublica.org/nonprofits/api/v2/search.json?ntee%5Bid%5D=" + nonProfitGroupingNums[group], function(data){
+    $.get("https://projects.propublica.org/nonprofits/api/v2/search.json?ntee%5Bid%5D=" + nonProfitGroupingNums[group] + "&state%5Bid%5D=" + state, function(data){
         var orgs = data.organizations;
         var subset = [];
         orgs.forEach(function(obj){
-            if (obj.ntee_code === subcategory || (obj.city.includes(city.toUpperCase()) && obj.state === state)){
+            if (obj.ntee_code === subcategory || obj.city.includes(city.toUpperCase())){
                 subset = subset.concat(obj);
             }
         });

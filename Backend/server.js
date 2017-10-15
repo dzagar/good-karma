@@ -9,6 +9,7 @@ var users = require('./routes/users');
 var bloodDonations = require('./routes/bloodDonations')
 var cashDonations = require('./routes/cashDonations')
 var volunteering = require('./routes/volunteering')
+var newsFeed = require('./routes/newsFeed')
 
 app.use(function (request, response, next) {
     response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -22,6 +23,7 @@ app.use('/users', users);
 app.use('/bloodDonations', bloodDonations);
 app.use('/cashDonations', cashDonations);
 app.use('/volunteering', volunteering);
+app.use('/newsFeed', volunteering);
 
 app.listen(3700, function() {
     console.log('Listening!');

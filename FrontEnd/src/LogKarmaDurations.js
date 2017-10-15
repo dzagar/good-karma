@@ -2,6 +2,7 @@
  * Created by danazagar on 2017-10-14.
  */
 import React from 'react';
+import { FormControl } from 'react-bootstrap';
 
 export class LogKarmaDurations extends React.Component {
     constructor(props) {
@@ -12,7 +13,8 @@ export class LogKarmaDurations extends React.Component {
     }
     render() {
         return (
-            <input type = "text" onChange = {this.props.onChange}/>
+            <FormControl type = "text" placeholder = "Enter a non-profit organization"
+                         onChange = {this.props.onChange} style = {{width: '50%', margin: 'auto'}}/>
         );
     }
 }

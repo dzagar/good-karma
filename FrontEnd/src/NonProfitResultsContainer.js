@@ -15,7 +15,7 @@ export class NonProfitResultsContainer extends React.Component {
     getDataRow(obj){
         var city = obj.city;
         var state = obj.state;
-        var subcategory = obj.ntee_code;
+        var karmaPts = Math.ceil(obj.score);
         var opportunities = "Volunteer, Donate Money"
         var npo = obj.name;
         return (
@@ -23,7 +23,7 @@ export class NonProfitResultsContainer extends React.Component {
                 <td>{state}</td>
                 <td>{city}</td>
                 <td>{npo}</td>
-                <td>{subcategory}</td>
+                <td>{karmaPts}</td>
                 <td>{opportunities}</td>
             </tr>
         );
@@ -38,7 +38,7 @@ export class NonProfitResultsContainer extends React.Component {
                     <th>State</th>
                     <th>City</th>
                     <th>Non-Profit Organization</th>
-                    <th>Subcategory / Grouping</th>
+                    <th>Karma Points</th>
                     <th>Opportunities</th>
                 </tr>
                 </thead>
