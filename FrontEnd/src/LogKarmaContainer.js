@@ -15,6 +15,8 @@ export class LogKarmaContainer extends React.Component {
         super(props);
         this.handleLocationChange = this.handleLocationChange.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
+        this.handleDurationChange = this.handleDurationChange.bind(this);
+        this.handleAmountChange = this.handleAmountChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             location: '',
@@ -29,11 +31,23 @@ export class LogKarmaContainer extends React.Component {
         });
     }
     handleDateChange(date) {
-        console.log(date);
         this.setState({
             date: date
         });
     }
+
+    handleDurationChange(e) {
+        this.setState({
+            duration: e.target.value
+        });
+    }
+
+    handleAmountChange(e) {
+        this.setState({
+            amount: e.target.value
+        });
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         if (this.props.selection === "act1"){
@@ -59,7 +73,7 @@ export class LogKarmaContainer extends React.Component {
                 <LogKarmaLocations onChange = {this.handleLocationChange}/>
                 </label>
                 <label>Date:
-                    <LogKarmaDates selectedVal = {this.state.date} onChange = {this.handleDateChange}/>
+                    <LogKarmaDates date = {this.state.date} onChange = {this.handleDateChange}/>
                 </label>
                 {extraParam}
                 <input type = "submit" value = "Submit"/>

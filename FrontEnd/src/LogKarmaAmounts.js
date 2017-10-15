@@ -6,9 +6,6 @@ import React from 'react';
 export class LogKarmaAmounts extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            amount: props.amount
-        };
     }
     render() {
         return (

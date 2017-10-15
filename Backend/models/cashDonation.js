@@ -3,7 +3,7 @@ var cashDonationSchema = mongoose.Schema(
     {
         date: String,
         location: String,
-        amount: Number,
+        amount: String,
         user: {type: mongoose.Schema.ObjectId, ref: 'Users'}
     }
 );

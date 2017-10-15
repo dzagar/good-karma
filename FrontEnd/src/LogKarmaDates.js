@@ -5,17 +5,12 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
+import moment from "moment";
 
 export class LogKarmaDates extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            date: this.props.date
-        };
-    }
     render() {
         return (
-            <DatePicker selected = {this.selectedVal} onChange = {this.props.onChange}/>
+            <DatePicker selected = {this.props.date && moment(this.props.date)} onChange = {this.props.onChange}/>
         );
     }
 }
