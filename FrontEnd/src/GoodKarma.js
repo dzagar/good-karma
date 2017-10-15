@@ -5,6 +5,7 @@ import React from 'react';
 import { LogKarma } from "./LogKarma";
 import { FindHowToHelp } from "./FindHowToHelp";
 import { NavBar } from "./NavBar";
+import { FindNonProfit } from "./FindNonProfit";
 
 
 export class GoodKarma extends React.Component {
@@ -25,12 +26,14 @@ export class GoodKarma extends React.Component {
     render() {
 
         let displayTab;
-        if (this.state.tabIndex == 0)
-        {
+        if (this.state.tabIndex == 0) {
             displayTab = <LogKarma />
-        } else if (this.state.tabIndex == 1)
-        {
+        }
+        else if (this.state.tabIndex == 1) {
             displayTab = <FindHowToHelp/>
+        }
+        else if (this.state.tabIndex == 2) {
+            displayTab = <FindNonProfit/>
         }
         return (
             <div>

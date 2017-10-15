@@ -2541,6 +2541,7 @@ export function GetRedCrossLocations(city, state, self, cb) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            cb(self, getListOfLocations(this.responseText));
         }
     };
     xhttp.open("GET", "http://www.redcrossblood.org/give/drive/driveSearchList.jsp?city=" + cityString + "&state=" + state + "&sd=10/15/2017&ed=10/28/2017&dt=WB:DR:PL&&_requestid=271494#", true);
@@ -2555,13 +2556,16 @@ function getListOfLocations(rawResponse)
 
     for(var currentVal in driveList)
     {
+        returnVal[currentVal] = JSON.stringify(driveList[currentVal].siteName).split("<br>").join(" ").split('"').join(" ");
 
         if (driveList[currentVal].siteLine1)
         {
+            returnVal[currentVal] = returnVal[currentVal] + JSON.stringify(driveList[currentVal].siteLine1).split("<br>").join("").split('"').join("");
         }
         
         if (driveList[currentVal].siteLine2)
         {
+            returnVal[currentVal] = returnVal[currentVal] + JSON.stringify(driveList[currentVal].siteLine2).split("<br>").join("").split('"').join("");
         }
     }
 
